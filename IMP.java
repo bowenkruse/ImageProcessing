@@ -1,8 +1,3 @@
-package CSCI442.Lab00;/*
- *Hunter Lloyd
- * Copy write.......I wrote, ask permission if you want to use it outside of class.
- */
-
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.event.ChangeEvent;
@@ -39,10 +34,6 @@ class IMP implements MouseListener, ChangeListener {
    //your 2D array of pixels
    int[][] picture;
 
-    /* 
-     * In the Constructor I set up the GUI, the frame the menus. The open pull down
-     * menu is how you will open an image to manipulate. 
-     */
    IMP() {
       toolkit = Toolkit.getDefaultToolkit();
       frame = new JFrame("Image Processing");
@@ -94,11 +85,7 @@ class IMP implements MouseListener, ChangeListener {
       frame.setJMenuBar(bar);
       frame.setVisible(true);      
    }
-   
-   /* 
-    * This method creates the pull down menu and sets up listeners to selection of the menu choices. If the listeners are activated they call the methods
-    * for handling the choice, fun1, fun2, fun3, fun4, etc. etc. 
-    */
+
    
   private JMenu getFunctions()
   {
@@ -162,10 +149,6 @@ class IMP implements MouseListener, ChangeListener {
       return fun;
   }
   
-  /*
-   * This method handles opening an image file, breaking down the picture to a one-dimensional array and then drawing the image on the frame. 
-   * You don't need to worry about this method. 
-   */
     private void handleOpen()
   {  
      img = new ImageIcon();
@@ -212,10 +195,7 @@ class IMP implements MouseListener, ChangeListener {
      mp.revalidate();
   }
   
-  /*
-   * The libraries in Java give a one dimensional array of RGB values for an image, I thought a 2-Dimensional array would be more useful to you
-   * So this method changes the one dimensional array to a two-dimensional. 
-   */
+
   private void turnTwoDimensional()
   {
      picture = new int[height][width];
@@ -225,9 +205,7 @@ class IMP implements MouseListener, ChangeListener {
           picture[i][j] = pixels[i*width+j];
      //originalPicture = picture.clone();
   }
-  /*
-   *  This method takes the picture back to the original picture
-   */
+
   private void reset() {
       width = originalWidth;
       height = originalHeight;
@@ -242,9 +220,7 @@ class IMP implements MouseListener, ChangeListener {
        mp.repaint();
        mp.revalidate(); 
     }
-  /*
-   * This method is called to redraw the screen with the new image. 
-   */
+
   private void resetPicture() {
       for(int i=0; i<height; i++)
            for(int j=0; j<width; j++)
@@ -258,9 +234,6 @@ class IMP implements MouseListener, ChangeListener {
       mp.revalidate();
   }
 
-    /*
-     * This method takes a single integer value and breaks it down doing bit manipulation to 4 individual int values for A, R, G, and B values
-     */
   private int [] getPixelArray(int pixel)
   {
       int[] temp = new int[4];
@@ -286,14 +259,7 @@ class IMP implements MouseListener, ChangeListener {
       int[] temp = getPixelArray(pix);
       System.out.println("Color value " + temp[0] + " " + temp[1] + " "+ temp[2] + " " + temp[3]);
     }
-   /*
-    * Example function that just removes all red values from the picture. 
-    * Each pixel value in picture[i][j] holds an integer value. You need to send that pixel to getPixelArray the method which will return a 4 element array 
-    * that holds A,R,G,B values. Ignore [0], that's the Alpha channel which is transparency, we won't be using that, but you can on your own.
-    * getPixelArray will breaks down your single int to 4 ints so you can manipulate the values for each level of R, G, B. 
-    * After you make changes and do your calculations to your pixel values the getPixels method will put the 4 values in your ARGB array back into a single
-    * integer value so you can give it back to the program and display the new picture. 
-    */
+
   private void fun1() {
       int i = 0, j = 0;
       for(i=0; i<height; i++)
